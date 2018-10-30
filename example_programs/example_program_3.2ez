@@ -1,0 +1,26 @@
+
+## Testing program 3
+## This is a program with no functions defined.
+## Directly passing to beginEZ
+## it tests jump statements
+
+beginEZ
+	int a = 100 .
+	int b = 2500 .
+	string robot_Name = "MARS_ROVER01.1" .
+
+	while( a < 250)
+		a = a % 20 .
+		move .
+	endwhile
+
+	for( int i = b ; i > 300 ; i -- )
+		if ( i < 50 )
+			read <- ( sensor0 ) .
+			break .
+		elsif ( i == 40 )
+			skip .
+		endif
+	endfor
+endEZ
+

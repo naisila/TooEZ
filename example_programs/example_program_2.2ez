@@ -1,0 +1,31 @@
+
+## Testing program 2
+## this function makes the robot move a certain distance
+## and perform some arbitrary actions that may be in master's desire
+## its purpose is to test for loop, dangling else, NEG_INTEGER
+
+functEZ void moveCertainDistance <- ( int move_distance )
+	for ( int i = (-1) ; i <= move_distance ; i ++ )
+		move .
+	endfor
+	if ( sensor2 == 0 )
+		if( sensor3 == 1)
+			grab .
+		elseif (sensor3 == 0.75)
+			read <- ( sensor4 ) .
+			turn <- ( left ) .
+		else
+			read <- ( sensor7 ) .
+		endif
+	endif
+	
+	int distance = 100 + sensor1 * 1000 .
+	
+	send <- ( "I finished moveCertainDistance master!" ) .
+endfunct
+
+beginEZ
+	int move_distance = 100 .
+	moveCertainDistance <- ( move_distance ) .
+endEZ
+

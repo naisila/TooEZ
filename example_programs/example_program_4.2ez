@@ -1,0 +1,29 @@
+
+## Testing program 4
+## This program tests NEG_FLOAT, BOOLEAN, RECEIVE
+## OR, AND, DIV_OP, POWER_OP
+
+functEZ boolean sensor1_2_isZero
+	if ( sensor1 == 0 /\ sensor2 == 0)
+		return true .
+	else
+		return false .
+	endif
+beginEZ
+	float value = (-0.6) .
+	if ( ~ ( sensor1_2_isZero ) )
+		read <- ( sensor1 ) .
+		read <- ( sensor2 ) .
+	else
+		sensor1 = value .
+		sensor2 = value .
+	endif
+	int test = 100 .
+	while ( test >= 0)
+		test = test / 5 .
+		if ( test % 3 == 0 \/ test % 4 == 0 )
+			value = value ^ 2 .
+		endif
+	endwhile
+endEZ
+

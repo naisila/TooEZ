@@ -1,0 +1,37 @@
+
+## Testting program 1
+## This is the very first program in TooEZ.
+## it tests most of primitive functions, while loop
+## arithmetic expressions and return statement.
+## here we define a function named getProduct and then call it in main
+## this function gets product of sums of specific sensors under
+## certain conditions
+
+functEZ int getProduct <- ( int product )
+	while ( sensor4 ~= 1 )
+		read <- ( sensor0 ) .
+	endwhile
+	while ( sensor5 ~= 0.75 )
+		turn <- ( right ) .
+	endwhile
+	while ( sensor5 ~= 1.0 )
+		move .
+	endwhile
+	product = ( sensor2 + sensor3 ) * ( sensor6 + sensor7 ) .
+	grab .
+	## go back to previous position
+	while ( sensor5 ~= 0.75 )
+		move .
+	endwhile
+	while ( sensor5 ~= 0 )
+		turn <- ( left ) .
+	endwhile
+	release .
+	send <- ( "I finished getProduct master" ) .
+	return product .
+endfunct
+beginEZ
+	int product .
+	product = getProduct <- ( product ) .
+endEZ
+
