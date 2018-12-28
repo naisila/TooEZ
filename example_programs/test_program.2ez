@@ -1,0 +1,123 @@
+## Test program for TooEZ language
+
+## This is the very first function in TooEZ.
+## it tests most of primitive functions, while loop
+## arithmetic expressions and return statement.
+## here we define a function named getProduct and then call it in main
+## this function gets product of sums of specific sensors under
+## certain conditions
+
+functEZ int getProduct <- ( int product )
+	while ( sensor4 ~= 1 )
+		read <- ( sensor0 ) .
+	endwhile
+	while ( sensor5 ~= 0.75 )
+		turn <- ( right ) .
+	endwhile
+	while ( sensor5 ~= 1.0 )
+		move .
+	endwhile
+	product = ( sensor2 + sensor3 ) * ( sensor6 + sensor7 ) .
+	grab .
+	## go back to previous position
+	while ( sensor5 ~= 0.75 )
+		move .
+	endwhile
+	while ( sensor5 ~= 0 )
+		turn <- ( left ) .
+	endwhile
+	release .
+	send <- ( "I finished getProduct master" ) .
+	return product .
+endfunct
+
+## this function makes the robot move a certain distance
+## and perform some arbitrary actions that may be in master's desire
+## its purpose is to test for loop, dangling else, NEG_INTEGER
+
+functEZ void moveCertainDistance <- ( int move_distance )
+	if ( sensor2 == (-1) )
+		if( sensor3 == 1)
+			grab .
+		elsif (sensor3 == 0.75)
+			read <- ( sensor4 ) .
+			turn <- ( left ) .
+		else
+			read <- ( sensor7 ) .
+		endif
+	endif
+	
+	int distance = 100 + sensor1 * 1000 .
+	
+	send <- ( "I finished moveCertainDistance master!" ) .
+endfunct
+
+## This function tests AND, BOOLEAN, EQUALS NEG_FLOAT, BOOLEAN, RECEIVE
+## OR, AND, DIV_OP, POWER_OP
+
+functEZ boolean sensor1_2_isZero
+	if ((sensor1 == 0 /\ sensor2 == 0))
+		return true .
+	else
+		return false .
+	endif
+endfunct
+
+##This is where the part to be executed starts
+beginEZ
+	int product .
+	## call getProduct function and assign its return value to product variable
+	product = getProduct <- ( product ) .
+	int move_distance = 100 .
+	moveCertainDistance <- ( move_distance ) .
+	
+	int a = 100 .
+	int b = 2500 .
+	string robot_Name = "MARS_ROVER01.1" .
+
+	while( a < 250)
+		a = a ^ 20 .
+		move .
+	endwhile
+
+	## tests jump statements
+	for( int i = b ; i > 300 ; i -- )
+		if ( i < 50 )
+			read <- ( sensor0 ) .
+			break .
+		elsif ( i == 40 )
+			skip .
+		endif
+	endfor
+
+	##tests FLOAT
+	float value = 0.6 .
+
+	##tests NOT
+	if ( ~ ( sensor1_2_isZero ) )
+		read <- ( sensor1 ) .
+		read <- ( sensor2 ) .
+	else
+		grab .
+		move .
+		release .
+	endif
+	int test = 100 .
+	while ( test >= 0)
+		## tests DIV_OP
+		test = test / 5 .
+		## tests OR
+		if ((test == 0 \/ test == 20))
+			## tests POWER_OP
+			value = value ^ 2 .
+		endif
+	endwhile
+
+	##simple input output testing
+	int input.
+	ezin<-(input).
+	ezout<-("Master, the number you entered is: ").
+	ezout<-(input).
+
+##end execution
+endEZ
