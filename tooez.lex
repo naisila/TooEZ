@@ -1,4 +1,6 @@
-/* CS315f18_group33.l */
+/* CS315f18_group33.l 
+* @authors Naisila, Fatbardh, Kunduz
+*/
 
 %{
   #include <stdlib.h>

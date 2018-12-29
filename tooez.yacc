@@ -1,4 +1,6 @@
-/* CS315f18_group33.yacc */
+/* CS315f18_group33.yacc 
+* @author Naisila Puka
+*/
 
 //tokens
 %token POS_INTEGER NEG_INTEGER POS_FLOAT NEG_FLOAT BOOLEAN TYPE VOID SENSOR_ID
